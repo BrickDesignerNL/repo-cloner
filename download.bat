@@ -22,9 +22,7 @@ FOR /F "tokens=1,2,3,4,5 delims=/" %%i in ("%UserInputRepository%") do (
 
 cd %BasePath%
 
-if not exist github\ md github
-if not exist huggingface\ md huggingface
-if not exist modelscope.cn\ md modelscope.cn
+if not exist %domain%\ md %domain%
 
 set str1="%domain%"
 if not x%str1:github=%==x%str1% ( cd github )
