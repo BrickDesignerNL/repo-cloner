@@ -1,7 +1,7 @@
 @ECHO Off
 
-set startDirectory = %cd%
-set startDrive = %startDirectory:~0,3%
+set startDirectory=%cd%
+set startDrive=%startDirectory:~0,3%
 
 
 SET BasePath=%startDrive%[Artificial Intelligence]\
