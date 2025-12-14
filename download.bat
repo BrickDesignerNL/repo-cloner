@@ -34,11 +34,9 @@ if not x%str1:modelscope=%==x%str1% (
 )
 
 if not exist %folder%\ md %folder%
+cd %folder%
 
-if not x%str1:github=%==x%str1% ( cd %folder% )
-if not x%str1:huggingface=%==x%str1% ( cd %folder% )
 if not x%str1:modelscope=%==x%str1% (
-  cd %folder%
   if not exist models\ (
     mkdir models
   )
