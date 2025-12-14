@@ -16,19 +16,23 @@ FOR /F "tokens=1,2,3,4,5 delims=/" %%i in ("%UserInputRepository%") do (
   ) else (
     set repositoryPublisher=%%k
     set repositoryName=%%l
-  )
+  )d
 )
 
 
 cd %BasePath%
 
-if not exist %domain%\ md %domain%
-
 set str1="%domain%"
-if not x%str1:github=%==x%str1% ( cd github )
-if not x%str1:huggingface=%==x%str1% ( cd huggingface )
+if not x%str1:github=%==x%str1% ( set folder=github )
+if not x%str1:huggingface=%==x%str1% ( set folder=huggingface )
+if not x%str1:modelscope=%==x%str1% ( set folder=modelscope.cn )
+
+if not exist %folder%\ md %folder%
+
+if not x%str1:github=%==x%str1% ( cd %folder% )
+if not x%str1:huggingface=%==x%str1% ( cd %folder% )
 if not x%str1:modelscope=%==x%str1% (
-  cd modelscope.cn
+  cd %folder%
   if not exist models\ (
     mkdir models
   )
