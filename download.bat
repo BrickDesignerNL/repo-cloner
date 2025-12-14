@@ -5,6 +5,7 @@ set startDrive = %startDirectory:~0,3%
 
 
 SET BasePath=%startDrive%[Artificial Intelligence]\
+if not exist "%BasePath%" md "%BasePath%"
 SET /p UserInputRepository="What repo would you like to clone? "
 
 FOR /F "tokens=1,2,3,4,5 delims=/" %%i in ("%UserInputRepository%") do (
@@ -21,15 +22,19 @@ FOR /F "tokens=1,2,3,4,5 delims=/" %%i in ("%UserInputRepository%") do (
 
 cd %BasePath%
 
+if not exist github\ md github
+if not exist huggingface\ md huggingface
+if not exist modelscope.cn\ md modelscope.cn
+
 set str1="%domain%"
 if not x%str1:github=%==x%str1% ( cd github )
 if not x%str1:huggingface=%==x%str1% ( cd huggingface )
 if not x%str1:modelscope=%==x%str1% (
   cd modelscope.cn
-REM  if not exist models\ (
-REM    mkdir models
-REM  )
-REM  cd models
+  if not exist models\ (
+    mkdir models
+  )
+  cd models
 )
 
 if not exist %repositoryPublisher%\ (
