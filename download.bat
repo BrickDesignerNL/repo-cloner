@@ -16,7 +16,7 @@ FOR /F "tokens=1,2,3,4,5 delims=/" %%i in ("%UserInputRepository%") do (
   ) else (
     set repositoryPublisher=%%k
     set repositoryName=%%l
-  )d
+  )
 )
 
 
